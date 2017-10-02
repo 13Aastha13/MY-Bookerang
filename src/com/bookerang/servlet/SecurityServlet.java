@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.bookerang.database.dao.BrUsersDao;
 import com.bookerang.database.object.BrUsers;
@@ -19,7 +20,7 @@ import com.bookerang.main.BrConstants;
 /**
  * Servlet implementation class SecurityServlet
  */
-@WebServlet("/SecurityServlet")
+//@WebServlet("/SecurityServlet")
 public class SecurityServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +49,7 @@ public class SecurityServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		//PrintWriter out = response.getWriter();
 		//response.setContentType("text/html;charset=UTF-8");
-		if(action.equals("login"))
+		/*if(action.equals("login"))
 		{
 			List<BrUsers> lbu =BrUsersDao.getUser(email, password);
 			if(lbu.size()==1)
@@ -68,13 +69,21 @@ public class SecurityServlet extends HttpServlet {
 				//out.print("FAILURE");
 			}
 			
-		}
-		/*
+		}*/
+		
 		if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
 		{
-			
-			out.print("SUCCESS");
-		}*/
+		
+			HttpSession mySession = request.getSession();
+			mySession.setMaxInactiveInterval(BrConstants.MAX_TIMEOUT);
+			mySession.setAttribute("BrUser", "Aastha");
+			//String BrName=lbu.get(0).getUsername();
+			//RequestDispatcher rdp= request.getRequestDispatcher("../../../../../WebContent/home.jsp");
+			 //RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/test.jsp");
+			//rdp.forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/test.jsp");
+			return;
+		}
 		
 	
 	}
