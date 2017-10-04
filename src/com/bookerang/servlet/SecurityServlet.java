@@ -47,31 +47,32 @@ public class SecurityServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		String action=request.getParameter("action");
 		String password=request.getParameter("password");
-		//PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		//response.setContentType("text/html;charset=UTF-8");
-		/*if(action.equals("login"))
+		if(action.equals("login"))
 		{
 			List<BrUsers> lbu =BrUsersDao.getUser(email, password);
 			if(lbu.size()==1)
 			{
-				//out.print("SUCCESS");
+			
 				HttpSession mySession = request.getSession();
 				mySession.setMaxInactiveInterval(BrConstants.MAX_TIMEOUT);
 				mySession.setAttribute("BrUser", lbu.get(0));
+				out.print("SUCCESS");
 				//String BrName=lbu.get(0).getUsername();
 				//RequestDispatcher rdp= request.getRequestDispatcher("../../../../../WebContent/home.jsp");
-				 RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/home.jsp");
-				rdp.forward(request, response);
+				// RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/home.jsp");
+				//rdp.forward(request, response);
 				
 			}
 			else 
 			{
-				//out.print("FAILURE");
+				out.print("FAILURE");
 			}
 			
-		}*/
+		}
 		
-		if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
+		/*if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
 		{
 		
 			HttpSession mySession = request.getSession();
@@ -81,9 +82,9 @@ public class SecurityServlet extends HttpServlet {
 			//RequestDispatcher rdp= request.getRequestDispatcher("../../../../../WebContent/home.jsp");
 			 //RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/test.jsp");
 			//rdp.forward(request, response);
-			response.sendRedirect(request.getContextPath()+"/test.jsp");
-			return;
-		}
+			//response.sendRedirect(request.getContextPath()+"/test.jsp");
+			//return;
+		}*/
 		
 	
 	}

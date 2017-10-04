@@ -7,9 +7,17 @@
 <title>Welcome</title>
 </head>
 <body>
-<% 
-BrUsers CurrentBrUser=(BrUsers)request.getSession().getAttribute("BrUser");
-String CurrentBrUserName=CurrentBrUser.getUsername();
+<% String CurrentBrUserName ="";
+	if (request.getSession(false) == null)
+	{
+		response.sendRedirect(request.getContextPath()+"/index.html");
+
+	} 
+	else {
+		BrUsers CurrentBrUser = (BrUsers) request.getSession()
+				.getAttribute("BrUser");
+	    CurrentBrUserName = CurrentBrUser.getUsername();
+	}
 %>
 <h1>Welcome <%=CurrentBrUserName%> </h1>
 </body>

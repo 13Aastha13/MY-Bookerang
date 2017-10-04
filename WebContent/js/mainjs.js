@@ -4,7 +4,7 @@ function OnLoginClick()
 	//var LName=document.getElementById('IdLName').value;
 	var Email=document.getElementById('IdEmail').value;
 	var Pwd=document.getElementById('IdPwd').value;
-	var FeedbackMsg = '';
+	var FeedbackMsg = 'Either Email or Password is incorrect..';
 	console.log(Email);
 	$.ajax({
 	    url : "SecurityServlet",
@@ -15,9 +15,21 @@ function OnLoginClick()
 	    
 	    success : function(data) 
 	    {
-	    	//window.location.replace("index.jsp");
+	    	if(data=="SUCCESS")
+	    	{
+	    		window.location="http://localhost:8080/Bookerang-MY/home.jsp";
+	    	}
+	    	else
+	    	{
+	    		if(data=="FAILURE")
+	    		{
+	    			document.getElementByID("IdFeedbackMsg").empty().append(FeedbackMsg);
+	    			//$('#loginMsg').empty().append(feedbackMsg);	
+	    		}
+
+	    	}
 	    	//location.reload();
-	    	console.log(data);
+	    	//console.log(data);
 	    },
 	  //  error: function(xhr, textStatus, errorThrown)
 	      error : function(data) 
