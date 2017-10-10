@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.text.StyledEditorKit.BoldAction;
 
+import com.alstom.website.database.object.login.MonUsers;
+import com.alstom.website.main.ActiveUserCounter;
 import com.bookerang.database.dao.BrUsersDao;
 import com.bookerang.database.object.BrUsers;
 import com.bookerang.main.BrConstants;
@@ -71,6 +73,15 @@ public class SecurityServlet extends HttpServlet {
 			}
 			
 		}
+		else if("logout".equalsIgnoreCase(action))
+		{
+
+			BrUsers CurrentBrUser = (BrUsers) request.getSession().getAttribute("BrUser");
+			System.out.println("Logout was requested by username : ["+ CurrentBrUser.getUsername() + "]");
+
+			
+			request.getSession().invalidate();
+
 		
 		/*if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
 		{

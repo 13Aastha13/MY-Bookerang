@@ -23,8 +23,8 @@ function OnLoginClick()
 	    	{
 	    		if(data=="FAILURE")
 	    		{
-	    			document.getElementByID("IdFeedbackMsg").empty().append(FeedbackMsg);
-	    			//$('#loginMsg').empty().append(feedbackMsg);	
+	    			document.getElementById('IdFeedbackMsg').innerHTML=FeedbackMsg;
+	    				
 	    		}
 
 	    	}
@@ -32,12 +32,11 @@ function OnLoginClick()
 	    	//console.log(data);
 	    },
 	  //  error: function(xhr, textStatus, errorThrown)
-	      error : function(data) 
-	    {
-	    	//feedbackMsg = "<span class='rt'>"+xhr.responseText+"</span>";
-	    	//$('#loginDlg').effect("highlight", {color: '#ff0000'}, 300).parent().effect('shake');
-	    	console.log(data);
-	    }
+	    error : function(xhr, textStatus, errorThrown)
+		{
+	    	FeedbackMsg = "<span class='rt'>"+ xhr.responseText + "</span>";
+			document.getElementById('IdFeedbackMsg').innerHTML=FeedbackMsg;
+		}
 	});
 	
 	
