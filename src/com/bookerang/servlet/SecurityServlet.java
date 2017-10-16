@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.swing.text.StyledEditorKit.BoldAction;
 
-import com.alstom.website.database.object.login.MonUsers;
-import com.alstom.website.main.ActiveUserCounter;
+
 import com.bookerang.database.dao.BrUsersDao;
 import com.bookerang.database.object.BrUsers;
 import com.bookerang.main.BrConstants;
@@ -67,6 +66,20 @@ public class SecurityServlet extends HttpServlet {
 				//rdp.forward(request, response);
 				
 			}
+
+			/*if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
+			{
+			
+				HttpSession mySession = request.getSession();
+				mySession.setMaxInactiveInterval(BrConstants.MAX_TIMEOUT);
+				mySession.setAttribute("BrUser", "Aastha");
+				//String BrName=lbu.get(0).getUsername();
+				//RequestDispatcher rdp= request.getRequestDispatcher("../../../../../WebContent/home.jsp");
+				 //RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/test.jsp");
+				//rdp.forward(request, response);
+				//response.sendRedirect(request.getContextPath()+"/test.jsp");
+				//return;
+			}*/
 			else 
 			{
 				out.print("FAILURE");
@@ -81,23 +94,8 @@ public class SecurityServlet extends HttpServlet {
 
 			
 			request.getSession().invalidate();
+		}
 
-		
-		/*if(email.equalsIgnoreCase("aastha.singhal@alstom.com")&& password.equals("Albus13#"))
-		{
-		
-			HttpSession mySession = request.getSession();
-			mySession.setMaxInactiveInterval(BrConstants.MAX_TIMEOUT);
-			mySession.setAttribute("BrUser", "Aastha");
-			//String BrName=lbu.get(0).getUsername();
-			//RequestDispatcher rdp= request.getRequestDispatcher("../../../../../WebContent/home.jsp");
-			 //RequestDispatcher rdp=  getServletContext().getRequestDispatcher("/test.jsp");
-			//rdp.forward(request, response);
-			//response.sendRedirect(request.getContextPath()+"/test.jsp");
-			//return;
-		}*/
-		
-	
-	}
 
-}
+
+	}}
